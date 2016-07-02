@@ -1,0 +1,5 @@
+<ul>
+  <{foreachq item=downloads from=$block}>
+    <li><a href="<{$xoops_url}>/modules/biblioteca/singlefile.php?lid=<{$downloads.lid}>" title="<{$downloads.title}>"><{$downloads.title}></a> (<{$downloads.rating}>)</li>
+  <{/foreach}>
+</ul>
