@@ -12,17 +12,17 @@
  * 4. La liberté d'améliorer et de rendre publiques les modifications afin
  * que l'ensemble de la communauté en bénéficie.
  *
- * @copyright   http://www.jequiehost.com
- * @license     http://www.fsf.org/copyleft/gpl.html GNU public license
- * @author		Leandro Angelo; TEAM DEV MODULE
+ * @copyright     http://www.jequiehost.com
+ * @license       http://www.fsf.org/copyleft/gpl.html GNU public license
+ * @author        Leandro Angelo; TEAM DEV MODULE
  *
  * ****************************************************************************
  */
 require_once 'header.php';
 
-if(!$xoopsModuleConfig['usetag']) {
-    redirect_header(XOOPS_URL.'/modules/biblioteca/index.php', 2, _ERRORS);
+if (!$xoopsModuleConfig['usetag']) {
+    redirect_header(XOOPS_URL . '/modules/biblioteca/index.php', 2, _ERRORS);
     exit();
 }
-require XOOPS_ROOT_PATH.'/modules/tag/view.tag.php';
-?> 
+require XOOPS_ROOT_PATH . '/modules/tag/view.tag.php';
+

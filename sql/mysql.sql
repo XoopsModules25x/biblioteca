@@ -18,7 +18,7 @@ CREATE TABLE biblioteca_broken (
   KEY lid (lid),
   KEY sender (sender),
   KEY ip (ip)
-) TYPE=MyISAM;
+) ENGINE=MyISAM;
 # --------------------------------------------------------
 
 #
@@ -34,7 +34,7 @@ CREATE TABLE biblioteca_cat (
   cat_weight int(11) NOT NULL default '0',
   PRIMARY KEY  (cat_cid),
   KEY cat_pid (cat_pid)
-) TYPE=MyISAM;
+) ENGINE=MyISAM;
 # --------------------------------------------------------
 
 #
@@ -65,7 +65,7 @@ CREATE TABLE biblioteca_downloads (
   KEY cid (cid),
   KEY status (status),
   KEY title (title(40))
-) TYPE=MyISAM;
+) ENGINE=MyISAM;
 # --------------------------------------------------------
 
 #
@@ -86,7 +86,7 @@ CREATE TABLE biblioteca_mod (
   description text NOT NULL,
   modifysubmitter int(11) NOT NULL default '0',
   PRIMARY KEY  (requestid)
-) TYPE=MyISAM;
+) ENGINE=MyISAM;
 # --------------------------------------------------------
 
 #
@@ -104,7 +104,7 @@ CREATE TABLE biblioteca_votedata (
   KEY ratinguser (ratinguser),
   KEY ratinghostname (ratinghostname),
   KEY lid (lid)
-) TYPE=MyISAM;
+) ENGINE=MyISAM;
 # --------------------------------------------------------
 
 #
@@ -120,7 +120,7 @@ CREATE TABLE biblioteca_field (
   search int(5) unsigned NOT NULL default '0',
   status_def int(5) unsigned NOT NULL default '0',
   PRIMARY KEY  (fid)
-) TYPE=MyISAM;
+) ENGINE=MyISAM;
 # --------------------------------------------------------
 
 #
@@ -133,7 +133,7 @@ CREATE TABLE biblioteca_fielddata (
   lid int(11) unsigned NOT NULL default '0',
   data varchar(255) NOT NULL default '',
   PRIMARY KEY  (iddata)
-) TYPE=MyISAM;
+) ENGINE=MyISAM;
 # --------------------------------------------------------
 
 #
@@ -146,4 +146,4 @@ CREATE TABLE biblioteca_modfielddata (
   lid int(11) unsigned NOT NULL default '0',
   moddata varchar(255) NOT NULL default '',
   PRIMARY KEY  (modiddata)
-) TYPE=MyISAM;
+) ENGINE=MyISAM;

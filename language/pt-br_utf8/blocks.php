@@ -11,16 +11,15 @@
  * 4. La liberté d'améliorer et de rendre publiques les modifications afin
  * que l'ensemble de la communauté en bénéficie.
  *
- * @copyright   http://www.jequiehost.com
- * @license     http://www.fsf.org/copyleft/gpl.html GNU public license
- * @author		Leandro Angelo; TEAM DEV MODULE
+ * @copyright     http://www.jequiehost.com
+ * @license       http://www.fsf.org/copyleft/gpl.html GNU public license
+ * @author        Leandro Angelo; TEAM DEV MODULE
  *
  * ****************************************************************************
  */
-define("_MB_biblioteca_ALLCAT","Todas as categorias");
-define("_MB_biblioteca_CATTODISPLAY","Exibir as categorias selecionadas");
-define("_MB_biblioteca_CHARS","Tamanho do título");
-define("_MB_biblioteca_DISP","Exibir");
-define("_MB_biblioteca_FILES","Livros");
-define("_MB_biblioteca_LENGTH","Caracteres");
-?>
+define('_MB_BIBLIOTECA_ALLCAT', 'Todas as categorias');
+define('_MB_BIBLIOTECA_CATTODISPLAY', 'Exibir as categorias selecionadas');
+define('_MB_BIBLIOTECA_CHARS', 'Tamanho do título');
+define('_MB_BIBLIOTECA_DISP', 'Exibir');
+define('_MB_BIBLIOTECA_FILES', 'Livros');
+define('_MB_BIBLIOTECA_LENGTH', 'Caracteres');
