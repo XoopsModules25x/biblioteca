@@ -1,0 +1,6 @@
+Credits
+===============
+
+Originally developed by Leandro Angelo (based on TMDDownloads Module)
+
+Version 1.1 was updated to XOOPS 2.5.8 Standard GUI by Michael Beck (Mamba)

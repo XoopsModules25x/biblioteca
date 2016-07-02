@@ -1,0 +1,11 @@
+
+1.10 Beta 1                     NOT RELESEAD
+---------------------------------------
+- Converted to XOOPS 2.5.8 Admin GUI (mamba)
+- PHP 7 adjustments (mamba)
+
+
+-------------------------------------------------
+1.00                                 17.04.2011
+-------------------------------------------------
+- original release by Leandro Angelo (based on TMDDownloads Module)

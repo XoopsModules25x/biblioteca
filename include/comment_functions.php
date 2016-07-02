@@ -27,13 +27,21 @@
 
 // comment callback functions
 
-function biblioteca_com_update($download_id, $total_num){
-	$db =& Database::getInstance();
-	$sql = 'UPDATE '.$db->prefix('biblioteca_downloads').' SET comments = '.$total_num.' WHERE lid = '.$download_id;
-	$db->query($sql);
+/**
+ * @param $download_id
+ * @param $total_num
+ */
+function biblioteca_com_update($download_id, $total_num)
+{
+    $db  = XoopsDatabaseFactory::getDatabaseConnection();
+    $sql = 'UPDATE ' . $db->prefix('biblioteca_downloads') . ' SET comments = ' . $total_num . ' WHERE lid = ' . $download_id;
+    $db->query($sql);
 }
 
-function biblioteca_com_approve(&$comment){
-	// notification mail here
+/**
+ * @param $comment
+ */
+function biblioteca_com_approve(&$comment)
+{
+    // notification mail here
 }
-?>

@@ -3,17 +3,17 @@
  * ****************************************************************************
  *  - biblioteca By Leandro Angelo
  *
- *  - Este é um módulo clonado do TDMDownloads
+ *  - Este ï¿½ um mï¿½dulo clonado do TDMDownloads
  *
- * 1. La liberté d'exécuter le logiciel, pour n'importe quel usage,
- * 2. La liberté de l' étudier et de l'adapter à ses besoins,
- * 3. La liberté de redistribuer des copies,
- * 4. La liberté d'améliorer et de rendre publiques les modifications afin
- * que l'ensemble de la communauté en bénéficie.
+ * 1. La libertï¿½ d'exï¿½cuter le logiciel, pour n'importe quel usage,
+ * 2. La libertï¿½ de l' ï¿½tudier et de l'adapter ï¿½ ses besoins,
+ * 3. La libertï¿½ de redistribuer des copies,
+ * 4. La libertï¿½ d'amï¿½liorer et de rendre publiques les modifications afin
+ * que l'ensemble de la communautï¿½ en bï¿½nï¿½ficie.
  *
- * @copyright   http://www.jequiehost.com
- * @license     http://www.fsf.org/copyleft/gpl.html GNU public license
- * @author		Leandro Angelo; TEAM DEV MODULE
+ * @copyright     http://www.jequiehost.com
+ * @license       http://www.fsf.org/copyleft/gpl.html GNU public license
+ * @author        Leandro Angelo; TEAM DEV MODULE
  *
  * ****************************************************************************
  */
@@ -21,153 +21,149 @@
 include_once 'header.php';
 // template d'affichage
 $xoopsOption['template_main'] = 'biblioteca_ratefile.html';
-include_once XOOPS_ROOT_PATH.'/header.php';
-$xoTheme->addStylesheet( XOOPS_URL . '/modules/' . $xoopsModule->getVar('dirname', 'n') . '/css/styles.css', null );
+include_once XOOPS_ROOT_PATH . '/header.php';
+$xoTheme->addStylesheet(XOOPS_URL . '/modules/' . $xoopsModule->getVar('dirname', 'n') . '/css/styles.css', null);
 //On recupere la valeur de l'argument op dans l'URL$
-$op = biblioteca_CleanVars($_REQUEST, 'op', 'liste', 'string');
+$op  = biblioteca_CleanVars($_REQUEST, 'op', 'liste', 'string');
 $lid = biblioteca_CleanVars($_REQUEST, 'lid', 0, 'int');
 
 //redirection si pas de permission de vote
 if ($perm_vote == false) {
-	redirect_header('index.php', 2, _NOPERM);
+    redirect_header('index.php', 2, _NOPERM);
     exit();
 }
 
-
 $view_downloads = $downloads_Handler->get($lid);
-// redirection si le téléchargement n'existe pas ou n'est pas activé
-if (count($view_downloads) == 0 || $view_downloads->getVar('status') == 0){
-    redirect_header('index.php', 3, _MD_biblioteca_SINGLEFILE_NONEXISTENT);
-	exit();
+// redirection si le tï¿½lï¿½chargement n'existe pas ou n'est pas activï¿½
+if (count($view_downloads) == 0 || $view_downloads->getVar('status') == 0) {
+    redirect_header('index.php', 3, _MD_BIBLIOTECA_SINGLEFILE_NONEXISTENT);
+    exit();
 }
 
 //redirection si pas de permission (cat)
 $categories = biblioteca_MygetItemIds('biblioteca_view', 'biblioteca');
-if(!in_array($view_downloads->getVar('cid'), $categories)) {
-	redirect_header(XOOPS_URL, 2, _NOPERM);
-	exit();
+if (!in_array($view_downloads->getVar('cid'), $categories)) {
+    redirect_header(XOOPS_URL, 2, _NOPERM);
+    exit();
 }
 
-
 //Les valeurs de op qui vont permettre d'aller dans les differentes parties de la page
-switch ($op) 
-{
-	// Vue liste
-    case "liste":
-        //tableau des catégories
+switch ($op) {
+    // Vue liste
+    case 'liste':
+        //tableau des catï¿½gories
         $criteria = new CriteriaCompo();
         $criteria->setSort('cat_weight ASC, cat_title');
         $criteria->setOrder('ASC');
-        $criteria->add(new Criteria('cat_cid', '(' . implode(',', $categories) . ')','IN'));
+        $criteria->add(new Criteria('cat_cid', '(' . implode(',', $categories) . ')', 'IN'));
         $downloadscat_arr = $downloadscat_Handler->getall($criteria);
-        $mytree = new XoopsObjectTree($downloadscat_arr, 'cat_cid', 'cat_pid');
+        $mytree           = new XoopsObjectTree($downloadscat_arr, 'cat_cid', 'cat_pid');
         //navigation
         $navigation = biblioteca_PathTreeUrl($mytree, $view_downloads->getVar('cid'), $downloadscat_arr, 'cat_title', $prefix = ' <img src="images/deco/arrow.gif"> ', true, 'ASC', true);
         $navigation .= ' <img src="images/deco/arrow.gif"> <a href="singlefile.php?lid=' . $view_downloads->getVar('lid') . '">' . $view_downloads->getVar('title') . '</a>';
-        $navigation .= ' <img src="images/deco/arrow.gif"> ' . _MD_biblioteca_SINGLEFILE_RATHFILE;
-        $xoopsTpl->assign('navigation', $navigation);        
-        // référencement
+        $navigation .= ' <img src="images/deco/arrow.gif"> ' . _MD_BIBLIOTECA_SINGLEFILE_RATHFILE;
+        $xoopsTpl->assign('navigation', $navigation);
+        // rï¿½fï¿½rencement
         // titre de la page
-        $pagetitle = _MD_biblioteca_SINGLEFILE_RATHFILE . ' - ' . $view_downloads->getVar('title') . ' - ';
+        $pagetitle = _MD_BIBLIOTECA_SINGLEFILE_RATHFILE . ' - ' . $view_downloads->getVar('title') . ' - ';
         $pagetitle .= biblioteca_PathTreeUrl($mytree, $view_downloads->getVar('cid'), $downloadscat_arr, 'cat_title', $prefix = ' - ', false, 'DESC', true);
         $xoopsTpl->assign('xoops_pagetitle', $pagetitle);
         //description
-        $xoTheme->addMeta( 'meta', 'description', strip_tags(_MD_biblioteca_SINGLEFILE_RATHFILE . ' (' . $view_downloads->getVar('title') . ')'));        
-        //Affichage du formulaire de notation des téléchargements
-    	$obj =& $downloadsvotedata_Handler->create();
-    	$form = $obj->getForm($lid);
-        $xoopsTpl->assign('themeForm', $form->render());    
-    break;
-    
+        $xoTheme->addMeta('meta', 'description', strip_tags(_MD_BIBLIOTECA_SINGLEFILE_RATHFILE . ' (' . $view_downloads->getVar('title') . ')'));
+        //Affichage du formulaire de notation des tï¿½lï¿½chargements
+        $obj  =& $downloadsvotedata_Handler->create();
+        $form = $obj->getForm($lid);
+        $xoopsTpl->assign('themeForm', $form->render());
+        break;
+
     // save
-    case "save":
+    case 'save':
         $obj =& $downloadsvotedata_Handler->create();
-        if(empty($xoopsUser)){
-			$ratinguser = 0;
-		}else{
-			$ratinguser = $xoopsUser->getVar('uid');
-		}
-        // si c'est un membre on vérifie qu'il ne vote pas pour son fichier
-		if ($ratinguser != 0) {
+        if (empty($xoopsUser)) {
+            $ratinguser = 0;
+        } else {
+            $ratinguser = $xoopsUser->getVar('uid');
+        }
+        // si c'est un membre on vï¿½rifie qu'il ne vote pas pour son fichier
+        if ($ratinguser != 0) {
             $criteria = new CriteriaCompo();
             $criteria->add(new Criteria('lid', $lid));
             $downloads_arr = $downloads_Handler->getall($criteria);
             foreach (array_keys($downloads_arr) as $i) {
-				if ($downloads_arr[$i]->getVar('submitter') == $ratinguser) {
-					redirect_header('singlefile.php?lid=' . intval($_REQUEST['lid']), 2, _MD_biblioteca_RATEFILE_CANTVOTEOWN);
-					exit();
-				}
-            }    
-            // si c'est un membre on vérifie qu'il ne vote pas 2 fois
+                if ($downloads_arr[$i]->getVar('submitter') == $ratinguser) {
+                    redirect_header('singlefile.php?lid=' . (int)$_REQUEST['lid'], 2, _MD_BIBLIOTECA_RATEFILE_CANTVOTEOWN);
+                    exit();
+                }
+            }
+            // si c'est un membre on vï¿½rifie qu'il ne vote pas 2 fois
             $criteria = new CriteriaCompo();
             $criteria->add(new Criteria('lid', $lid));
             $downloadsvotes_arr = $downloadsvotedata_Handler->getall($criteria);
             foreach (array_keys($downloadsvotes_arr) as $i) {
-				if ($downloadsvotes_arr[$i]->getVar('ratinguser') == $ratinguser) {
-					redirect_header('singlefile.php?lid=' . intval($_REQUEST['lid']), 2, _MD_biblioteca_RATEFILE_VOTEONCE);
-					exit();
-				}
+                if ($downloadsvotes_arr[$i]->getVar('ratinguser') == $ratinguser) {
+                    redirect_header('singlefile.php?lid=' . (int)$_REQUEST['lid'], 2, _MD_BIBLIOTECA_RATEFILE_VOTEONCE);
+                    exit();
+                }
             }
-		} else {
-			// si c'est un utilisateur anonyme on vérifie qu'il ne vote pas 2 fois par jour
-			$yesterday = (time()-86400);
-            $criteria = new CriteriaCompo();
+        } else {
+            // si c'est un utilisateur anonyme on vï¿½rifie qu'il ne vote pas 2 fois par jour
+            $yesterday = (time() - 86400);
+            $criteria  = new CriteriaCompo();
             $criteria->add(new Criteria('lid', $lid));
             $criteria->add(new Criteria('ratinguser', 0));
-            $criteria->add(new Criteria('ratinghostname', getenv("REMOTE_ADDR")));
+            $criteria->add(new Criteria('ratinghostname', getenv('REMOTE_ADDR')));
             $criteria->add(new Criteria('ratingtimestamp', $yesterday, '>'));
-			if ($downloadsvotedata_Handler->getCount($criteria) >= 1) {
-				redirect_header('singlefile.php?lid=' . intval($_REQUEST['lid']), 2, _MD_biblioteca_RATEFILE_VOTEONCE);
-				exit();
-			}
-		}
-        $erreur = false;
+            if ($downloadsvotedata_Handler->getCount($criteria) >= 1) {
+                redirect_header('singlefile.php?lid=' . (int)$_REQUEST['lid'], 2, _MD_BIBLIOTECA_RATEFILE_VOTEONCE);
+                exit();
+            }
+        }
+        $erreur         = false;
         $message_erreur = '';
         // Test avant la validation
-        $rating = intval($_POST['rating']);
+        $rating = (int)$_POST['rating'];
         if ($rating < 0 || $rating > 10) {
-            $message_erreur.= _MD_biblioteca_RATEFILE_NORATING . '<br>';
-            $erreur=true;
-        }	
-        xoops_load("captcha");
+            $message_erreur .= _MD_BIBLIOTECA_RATEFILE_NORATING . '<br>';
+            $erreur = true;
+        }
+        xoops_load('captcha');
         $xoopsCaptcha = XoopsCaptcha::getInstance();
-        if ( !$xoopsCaptcha->verify() ) {
-            $message_erreur.=$xoopsCaptcha->getMessage() . '<br>';
-            $erreur=true;
+        if (!$xoopsCaptcha->verify()) {
+            $message_erreur .= $xoopsCaptcha->getMessage() . '<br>';
+            $erreur = true;
         }
         $obj->setVar('lid', $lid);
         $obj->setVar('ratinguser', $ratinguser);
         $obj->setVar('rating', $rating);
-        $obj->setVar('ratinghostname', getenv("REMOTE_ADDR"));
+        $obj->setVar('ratinghostname', getenv('REMOTE_ADDR'));
         $obj->setVar('ratingtimestamp', time());
-        if ($erreur==true){
+        if ($erreur == true) {
             $xoopsTpl->assign('message_erreur', $message_erreur);
-        }else{
+        } else {
             if ($downloadsvotedata_Handler->insert($obj)) {
                 $criteria = new CriteriaCompo();
                 $criteria->add(new Criteria('lid', $lid));
                 $downloadsvotes_arr = $downloadsvotedata_Handler->getall($criteria);
-                $total_vote = $downloadsvotedata_Handler->getCount($criteria);
-                $total_rating = 0;
+                $total_vote         = $downloadsvotedata_Handler->getCount($criteria);
+                $total_rating       = 0;
                 foreach (array_keys($downloadsvotes_arr) as $i) {
                     $total_rating += $downloadsvotes_arr[$i]->getVar('rating');
-                }            
-                $rating = $total_rating / $total_vote;
+                }
+                $rating       = $total_rating / $total_vote;
                 $objdownloads =& $downloads_Handler->get($lid);
                 $objdownloads->setVar('rating', number_format($rating, 1));
                 $objdownloads->setVar('votes', $total_vote);
                 if ($downloads_Handler->insert($objdownloads)) {
-                    redirect_header('singlefile.php?lid=' . $lid, 2, _MD_biblioteca_RATEFILE_VOTEOK);
+                    redirect_header('singlefile.php?lid=' . $lid, 2, _MD_BIBLIOTECA_RATEFILE_VOTEOK);
                 }
                 echo $objdownloads->getHtmlErrors();
             }
             echo $obj->getHtmlErrors();
         }
-        //Affichage du formulaire de notation des téléchargements
-    	$form =& $obj->getForm($lid);
-        $xoopsTpl->assign('themeForm', $form->render());   
-        
-    break;    
+        //Affichage du formulaire de notation des tï¿½lï¿½chargements
+        $form =& $obj->getForm($lid);
+        $xoopsTpl->assign('themeForm', $form->render());
+
+        break;
 }
-include XOOPS_ROOT_PATH.'/footer.php';
-?>
+include XOOPS_ROOT_PATH . '/footer.php';

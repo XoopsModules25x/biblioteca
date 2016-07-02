@@ -1,10 +1,10 @@
-<br /><br />
+<br><br>
 <p align="center">
-    <a href="<{$xoops_url}>/modules/biblioteca/index.php"><img src="<{$xoops_url}>/modules/biblioteca/images/logo-en.gif" alt="" border="0" /></a>
+    <a href="<{$xoops_url}>/modules/biblioteca/index.php"><img src="<{$xoops_url}>/modules/biblioteca/images/logo-en.gif" alt="" border="0"/></a>
 </p>
 
 <b><{$navigation}></b>
-<br /><br />
+<br><br>
 <div style="border-bottom: 1px #333 solid;"></div>
 
 <table>
@@ -12,7 +12,7 @@
         <{if $show_screenshot == true}>
         <{if $logourl != ''}>
         <td style="width: <{$shotwidth}>px; vertical-align: top;">
-            <img style="margin-top: 1em; margin-right: 1em; padding-left: 4px;" src="<{$logourl}>" width="" alt="" />
+            <img style="margin-top: 1em; margin-right: 1em; padding-left: 4px;" src="<{$logourl}>" width="" alt=""/>
         </td>
         <{/if}>
         <{/if}>
@@ -30,10 +30,10 @@
         </td>
         <td width="30%" align="right">
             <div style="border: 1px solid #333; text-align: left; min-width: 220px; font-size: 10px; padding: .5em; margin-top: .5em; line-height: 14px;">
-                <p style="background: url(<{$xoops_url}>/modules/biblioteca/images/icon/date.png) no-repeat left; padding-left: 20px;">&nbsp;<{$smarty.const._MD_biblioteca_SINGLEFILE_DATEPROP}>:&nbsp;<{$date}></p>
-                <p style="background: url(<{$xoops_url}>/modules/biblioteca/images/icon/author.png) no-repeat left ; padding-left: 20px;">&nbsp;<{$smarty.const._MD_biblioteca_SINGLEFILE_AUTHOR}>:&nbsp;<{$author}></p>
+                <p style="background: url(<{$xoops_url}>/modules/biblioteca/images/icon/date.png) no-repeat left; padding-left: 20px;">&nbsp;<{$smarty.const._MD_BIBLIOTECA_SINGLEFILE_DATEPROP}>:&nbsp;<{$date}></p>
+                <p style="background: url(<{$xoops_url}>/modules/biblioteca/images/icon/author.png) no-repeat left ; padding-left: 20px;">&nbsp;<{$smarty.const._MD_BIBLIOTECA_SINGLEFILE_AUTHOR}>:&nbsp;<{$author}></p>
                 <p style="background: url(<{$xoops_url}>/modules/biblioteca/images/icon/hits.png) no-repeat left; padding-left: 20px;">&nbsp;<{$hits}></p>
-                <p style="background: url(<{$xoops_url}>/modules/biblioteca/images/icon/votes.png) no-repeat left; padding-left: 20px;">&nbsp;<{$smarty.const._MD_biblioteca_SINGLEFILE_RATING}>:&nbsp;<{$rating}>&nbsp;<{$votes}></p>
+                <p style="background: url(<{$xoops_url}>/modules/biblioteca/images/icon/votes.png) no-repeat left; padding-left: 20px;">&nbsp;<{$smarty.const._MD_BIBLIOTECA_SINGLEFILE_RATING}>:&nbsp;<{$rating}>&nbsp;<{$votes}></p>
                 <p style="background: url(<{$xoops_url}>/modules/biblioteca/images/icon/comments.png) no-repeat left; padding-left: 20px;">&nbsp;<{$nb_comments}></p>
             </div>
             <{if $sup_aff == true}>
@@ -45,41 +45,45 @@
             <{/if}>
             <div style="border: 1px solid #333; text-align: left; min-width: 220px; font-size: 10px; padding: .5em; margin-top: .5em; line-height: 14px;">
                 <{if $perm_vote != ""}>
-                <p style="background: url(<{$xoops_url}>/modules/biblioteca/images/icon/torate.png) no-repeat left; padding-left: 20px;"><a href="<{$xoops_url}>/modules/biblioteca/ratefile.php?lid=<{$lid}>" title="<{$smarty.const._MD_biblioteca_SINGLEFILE_RATHFILE}>">&nbsp;<{$smarty.const._MD_biblioteca_SINGLEFILE_RATHFILE}></a></p>
+                <p style="background: url(<{$xoops_url}>/modules/biblioteca/images/icon/torate.png) no-repeat left; padding-left: 20px;"><a href="<{$xoops_url}>/modules/biblioteca/ratefile.php?lid=<{$lid}>" title="<{$smarty.const._MD_BIBLIOTECA_SINGLEFILE_RATHFILE}>">&nbsp;<{$smarty.const._MD_BIBLIOTECA_SINGLEFILE_RATHFILE}></a>
+                </p>
                 <{/if}>
                 <{if $perm_modif != ""}>
-                <p style="background: url(<{$xoops_url}>/modules/biblioteca/images/icon/tomodify.png) no-repeat left; padding-left: 20px;"><a href="<{$xoops_url}>/modules/biblioteca/modfile.php?lid=<{$lid}>" title="<{$smarty.const._MD_biblioteca_SINGLEFILE_MODIFY}>">&nbsp;<{$smarty.const._MD_biblioteca_SINGLEFILE_MODIFY}></a></p>
+                <p style="background: url(<{$xoops_url}>/modules/biblioteca/images/icon/tomodify.png) no-repeat left; padding-left: 20px;"><a href="<{$xoops_url}>/modules/biblioteca/modfile.php?lid=<{$lid}>" title="<{$smarty.const._MD_BIBLIOTECA_SINGLEFILE_MODIFY}>">&nbsp;<{$smarty.const._MD_BIBLIOTECA_SINGLEFILE_MODIFY}></a>
+                </p>
                 <{/if}>
-                <p style="background: url(<{$xoops_url}>/modules/biblioteca/images/icon/toreport.png) no-repeat left; padding-left: 20px;"><a href="<{$xoops_url}>/modules/biblioteca/brokenfile.php?lid=<{$lid}>" title="<{$smarty.const._MD_biblioteca_SINGLEFILE_REPORTBROKEN}>">&nbsp;<{$smarty.const._MD_biblioteca_SINGLEFILE_REPORTBROKEN}></a></p>
+                <p style="background: url(<{$xoops_url}>/modules/biblioteca/images/icon/toreport.png) no-repeat left; padding-left: 20px;"><a href="<{$xoops_url}>/modules/biblioteca/brokenfile.php?lid=<{$lid}>" title="<{$smarty.const._MD_BIBLIOTECA_SINGLEFILE_REPORTBROKEN}>">&nbsp;<{$smarty.const._MD_BIBLIOTECA_SINGLEFILE_REPORTBROKEN}></a>
+                </p>
                 <p style="background: url(<{$xoops_url}>/modules/biblioteca/images/icon/totell.png) no-repeat left; padding-left: 20px;">&nbsp;<{$tellafriend_texte}></p>
             </div>
             <{if $perm_download != ""}>
             <div style="border: 1px solid #333; text-align: left; min-width: 220px; margin-top: .5em;">
-                <p style="background: url(<{$xoops_url}>/modules/biblioteca/images/icon/download-now.png) no-repeat left; padding: 5px 0 0 25px; line-height: 18px; font-size: 1.1em"><a href='visit.php?cid=<{$cid}>&amp;lid=<{$lid}>' target='_blank'>&nbsp;<{$smarty.const._MD_biblioteca_INDEX_DLNOW}></a></p>
+                <p style="background: url(<{$xoops_url}>/modules/biblioteca/images/icon/download-now.png) no-repeat left; padding: 5px 0 0 25px; line-height: 18px; font-size: 1.1em"><a href='visit.php?cid=<{$cid}>&amp;lid=<{$lid}>' target='_blank'>
+                    &nbsp;<{$smarty.const._MD_BIBLIOTECA_INDEX_DLNOW}></a></p>
             </div>
             <{/if}>
-			<{if $paypal}>
-				<div style="text-align: center; min-width: 220px; margin-top: .5em;">
-					<{$paypal}>
-				</div>
-			<{/if}>
+            <{if $paypal}>
+            <div style="text-align: center; min-width: 220px; margin-top: .5em;">
+                <{$paypal}>
+            </div>
+            <{/if}>
         </td>
     </tr>
 </table>
 <{if $tags}>
-	<br /><{include file="db:tag_bar.html"}>
+<br><{include file="db:tag_bar.html"}>
 <{/if}>
 <div style="text-align: center; padding: 3px; margin:3px;">
-  <{$commentsnav}>
-  <{$lang_notice}>
+    <{$commentsnav}>
+    <{$lang_notice}>
 </div>
 <div style="margin:3px; padding: 3px;">
-<{if $comment_mode == "flat"}>
-  <{include file="db:system_comments_flat.html"}>
-<{elseif $comment_mode == "thread"}>
-  <{include file="db:system_comments_thread.html"}>
-<{elseif $comment_mode == "nest"}>
-  <{include file="db:system_comments_nest.html"}>
-<{/if}>
+    <{if $comment_mode == "flat"}>
+    <{include file="db:system_comments_flat.html"}>
+    <{elseif $comment_mode == "thread"}>
+    <{include file="db:system_comments_thread.html"}>
+    <{elseif $comment_mode == "nest"}>
+    <{include file="db:system_comments_nest.html"}>
+    <{/if}>
 </div>
 <{include file="db:system_notification_select.html"}>
