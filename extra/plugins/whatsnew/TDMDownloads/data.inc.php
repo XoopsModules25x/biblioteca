@@ -23,7 +23,7 @@ function biblioteca_new($limit = 0, $offset = 0)
 {
     global $xoopsDB;
 
-    $myts =& MyTextSanitizer::getInstance();
+    $myts = MyTextSanitizer::getInstance();
 
     $URL_MOD = XOOPS_URL . '/modules/biblioteca';
     $sql     = 'SELECT lid, title, date, cid, submitter, hits, description FROM ' . $xoopsDB->prefix('biblioteca_downloads') . ' WHERE status>0 ORDER BY date';
